@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Humanoid Robot Initiative</title>
+    <title>Humanoid Robotics Initiative</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,568 +13,722 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: #333;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
+        /* Hero Section */
         .hero {
             min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 2rem;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .hero-content {
             display: grid;
             grid-template-columns: 1fr 1fr;
+            align-items: center;
             gap: 4rem;
-            max-width: 1200px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            padding: 4rem;
-            border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 2rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            z-index: 0;
         }
 
         .hero-image {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border-radius: 15px;
-            padding: 3rem;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            position: relative;
+            z-index: 1;
         }
 
-        .hero-image-placeholder {
+        .image-container {
             width: 100%;
-            max-width: 300px;
             aspect-ratio: 1;
-            background: white;
-            border-radius: 10px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+            border-radius: 24px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            color: #666;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(99, 102, 241, 0.1), transparent);
+        }
+
+        .image-placeholder {
+            padding: 3rem;
             text-align: center;
-            padding: 2rem;
+            color: #666;
+            font-size: 0.9rem;
+            z-index: 1;
+        }
+
+        .hero-text {
+            position: relative;
+            z-index: 1;
         }
 
         .hero-text h1 {
-            font-size: 3rem;
-            color: #667eea;
-            margin-bottom: 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #6366f1;
             text-transform: uppercase;
-            letter-spacing: 2px;
-        }
-
-        .hero-text p {
-            font-size: 1.2rem;
-            color: #555;
-            line-height: 1.8;
-            margin-bottom: 0.8rem;
-        }
-
-        .section {
-            padding: 4rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .vision-section {
-            background: white;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            padding: 4rem;
-            border-radius: 20px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .vision-text h2 {
-            font-size: 2.5rem;
-            color: #764ba2;
+            letter-spacing: 3px;
             margin-bottom: 1.5rem;
         }
 
-        .vision-text p {
+        .hero-text h2 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+
+        .hero-text p {
             font-size: 1.1rem;
-            color: #555;
-            margin-bottom: 1rem;
-            line-height: 1.8;
+            color: #999;
+            margin-bottom: 1.2rem;
+            font-weight: 300;
         }
 
-        .vision-image {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            border-radius: 15px;
-            padding: 3rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .vision-image-placeholder {
-            width: 100%;
-            max-width: 300px;
-            aspect-ratio: 1;
-            background: white;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1rem;
-            color: #666;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .about-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 4rem;
-            border-radius: 20px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .about-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .about-section p {
-            font-size: 1.2rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto 1.5rem;
-        }
-
-        .goals-section {
-            background: white;
-            padding: 4rem;
-            border-radius: 20px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .goals-section h2 {
-            font-size: 2.5rem;
-            color: #667eea;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .goals-list {
+        /* Vision Section */
+        .vision {
+            padding: 8rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .vision-text h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+        }
+
+        .vision-text p {
+            font-size: 1.05rem;
+            color: #999;
+            margin-bottom: 1.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* About Section */
+        .about {
+            background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+            padding: 8rem 6rem;
+            margin: 4rem 0;
+        }
+
+        .about-content {
             max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .about h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+        }
+
+        .about p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.95;
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        /* Goals Section */
+        .goals {
+            padding: 8rem 6rem;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
-        .goal-item {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            color: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+        .goals h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
         }
 
-        .goal-item:hover {
-            transform: translateY(-5px);
+        .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .goal-item {
+            background: #1a1a1a;
+            padding: 3rem;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
         .goal-item::before {
-            content: "✓";
-            display: inline-block;
-            width: 30px;
-            height: 30px;
-            background: white;
-            color: #667eea;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            margin-right: 1rem;
-            font-weight: bold;
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 16px;
+            padding: 1px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
-        .events-section {
-            background: white;
-            padding: 4rem;
-            border-radius: 20px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        .goal-item:hover::before {
+            opacity: 1;
         }
 
-        .events-section h2 {
-            font-size: 2.5rem;
-            color: #764ba2;
-            margin-bottom: 2rem;
+        .goal-item:hover {
+            transform: translateY(-4px);
+            border-color: transparent;
+        }
+
+        .goal-number {
+            font-size: 0.9rem;
+            color: #6366f1;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .goal-item p {
+            font-size: 1.05rem;
+            color: #ccc;
+            line-height: 1.6;
+        }
+
+        /* Events Section */
+        .events {
+            padding: 8rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .events h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
             text-align: center;
         }
 
         .events-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
+            margin-bottom: 4rem;
         }
 
         .event-card {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            padding: 2rem;
-            border-radius: 15px;
-            color: white;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
         }
 
-        .event-card h3 {
-            font-size: 1.5rem;
+        .event-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(99, 102, 241, 0.3);
+        }
+
+        .event-type {
+            color: #6366f1;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
             margin-bottom: 1rem;
         }
 
-        .event-card p {
-            margin-bottom: 0.5rem;
+        .event-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
         }
 
-        .event-info {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 1.5rem;
-            border-radius: 10px;
+        .event-detail {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.8rem;
+            color: #999;
+            font-size: 0.95rem;
+        }
+
+        .event-detail-label {
+            color: #666;
+            min-width: 70px;
+        }
+
+        .rsvp-btn {
             margin-top: 1.5rem;
-        }
-
-        .rsvp-button {
-            background: white;
-            color: #f5576c;
+            width: 100%;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: bold;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.95rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
         }
 
-        .rsvp-button:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        .rsvp-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
-        .team-section {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            padding: 4rem;
-            border-radius: 20px;
-            margin: 2rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        .meeting-times {
+            background: #1a1a1a;
+            border-radius: 16px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
-        .team-section h2 {
-            font-size: 2.5rem;
-            color: white;
-            margin-bottom: 2rem;
+        .meeting-times p {
+            color: #999;
+            margin-bottom: 0.8rem;
+            font-size: 1.05rem;
+        }
+
+        /* Team Section */
+        .team {
+            padding: 8rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .team h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
             text-align: center;
         }
 
         .team-category {
-            margin-bottom: 3rem;
+            margin-bottom: 4rem;
         }
 
         .team-category h3 {
-            font-size: 1.8rem;
-            color: white;
-            margin-bottom: 1.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #6366f1;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
 
         .team-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
+            gap: 1.5rem;
         }
 
-        .team-member {
-            background: white;
+        .cofounders-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .execs-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .leaders-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .members-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .team-card {
+            background: #1a1a1a;
+            border-radius: 12px;
             padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
         }
 
-        .team-member:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .team-card:hover {
+            border-color: rgba(99, 102, 241, 0.3);
+            transform: translateX(4px);
         }
 
-        .team-member-icon {
-            width: 80px;
-            height: 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        .team-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             border-radius: 50%;
-            margin: 0 auto 1rem;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
         }
 
-        .team-member h4 {
-            font-size: 1.2rem;
-            color: #333;
+        .team-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
         }
 
+        .team-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Modal */
         .modal {
             display: none;
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
+            inset: 0;
+            background: rgba(0, 0, 0, 0.9);
             z-index: 1000;
             align-items: center;
             justify-content: center;
+            backdrop-filter: blur(10px);
         }
 
         .modal-content {
-            background: white;
+            background: #1a1a1a;
             padding: 3rem;
-            border-radius: 20px;
+            border-radius: 16px;
             max-width: 500px;
             width: 90%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             position: relative;
         }
 
         .close-modal {
             position: absolute;
-            top: 1rem;
-            right: 1rem;
-            font-size: 2rem;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
             cursor: pointer;
-            color: #666;
+            color: #999;
+            transition: color 0.3s ease;
         }
 
-        @media (max-width: 768px) {
-            .hero-content,
-            .vision-section {
+        .close-modal:hover {
+            color: #fff;
+        }
+
+        .modal h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #6366f1;
+        }
+
+        .modal input {
+            width: 100%;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background: #0a0a0a;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .modal input:focus {
+            outline: none;
+            border-color: #6366f1;
+        }
+
+        @media (max-width: 1024px) {
+            .hero, .vision {
+                grid-template-columns: 1fr;
+                padding: 4rem 2rem;
+            }
+
+            .events-grid {
                 grid-template-columns: 1fr;
             }
 
-            .hero-text h1 {
+            .goals-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h2 {
+                font-size: 2.5rem;
+            }
+
+            .vision-text h2, .about h2, .goals h2, .events h2, .team h2 {
                 font-size: 2rem;
-            }
-        }
-
-        .scroll-indicator {
-            text-align: center;
-            padding: 2rem;
-            color: white;
-            font-size: 1.2rem;
-        }
-
-        .scroll-arrow {
-            display: inline-block;
-            animation: bounce 2s infinite;
-        }
-
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {
-                transform: translateY(0);
-            }
-            40% {
-                transform: translateY(-10px);
-            }
-            60% {
-                transform: translateY(-5px);
             }
         }
     </style>
 </head>
 <body>
-    <div class="hero">
-        <div class="hero-content">
-            <div class="hero-image">
-                <div class="hero-image-placeholder">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-image">
+            <div class="image-container">
+                <div class="image-placeholder">
                     Picture of humanoid robot helping elderly lady walk
                 </div>
             </div>
-            <div class="hero-text">
-                <h1>Mission</h1>
-                <p>Advancing humanoid robotics to enhance quality of life and support our communities through innovative technology.</p>
-                <p>Empowering individuals with cutting-edge robotic assistance for daily living.</p>
-                <p>Building a future where humans and robots work together harmoniously.</p>
-            </div>
         </div>
-    </div>
+        <div class="hero-text">
+            <h1>Mission</h1>
+            <h2>Advancing Humanoid Robotics for a Better Tomorrow</h2>
+            <p>Advancing humanoid robotics to enhance quality of life and support our communities through innovative technology.</p>
+            <p>Empowering individuals with cutting-edge robotic assistance for daily living.</p>
+            <p>Building a future where humans and robots work together harmoniously.</p>
+        </div>
+    </section>
 
-    <div class="scroll-indicator">
-        <div class="scroll-arrow">↓</div>
-        <div>Scroll down to explore</div>
-    </div>
-
-    <div class="vision-section">
+    <!-- Vision Section -->
+    <section class="vision">
         <div class="vision-text">
             <h2>Vision</h2>
             <p>We envision a world where humanoid robots seamlessly integrate into daily life, providing support, companionship, and assistance to those who need it most.</p>
             <p>Through advanced AI and robotics, we're creating intelligent machines that understand human needs and respond with compassion.</p>
             <p>Our vision extends beyond technology—it's about building connections and improving lives.</p>
         </div>
-        <div class="vision-image">
-            <div class="vision-image-placeholder">
-                Picture of BananaBot: humanoid robot dark and mysterious AI-generated image
+        <div class="hero-image">
+            <div class="image-container">
+                <div class="image-placeholder">
+                    Picture of BananaBot: humanoid robot dark and mysterious AI-generated image
+                </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="about-section">
-        <h2>About Us</h2>
-        <p>We are a dedicated team of engineers, researchers, and innovators passionate about the intersection of robotics and human care. Our organization was founded on the belief that technology should serve humanity in meaningful ways.</p>
-        <p>With years of combined experience in AI, robotics, and healthcare technology, we're pushing the boundaries of what's possible in humanoid robotics.</p>
-        <p>Our collaborative approach brings together diverse perspectives to create solutions that truly make a difference in people's lives.</p>
-    </div>
+    <!-- About Section -->
+    <section class="about">
+        <div class="about-content">
+            <h2>About Us</h2>
+            <p>We are a dedicated team of engineers, researchers, and innovators passionate about the intersection of robotics and human care. Our organization was founded on the belief that technology should serve humanity in meaningful ways.</p>
+            <p>With years of combined experience in AI, robotics, and healthcare technology, we're pushing the boundaries of what's possible in humanoid robotics.</p>
+            <p>Our collaborative approach brings together diverse perspectives to create solutions that truly make a difference in people's lives.</p>
+        </div>
+    </section>
 
-    <div class="goals-section">
+    <!-- Goals Section -->
+    <section class="goals">
         <h2>Goals</h2>
-        <div class="goals-list">
+        <div class="goals-grid">
             <div class="goal-item">
-                Develop safe and reliable humanoid robots for elderly care assistance
+                <div class="goal-number">01</div>
+                <p>Develop safe and reliable humanoid robots for elderly care assistance</p>
             </div>
             <div class="goal-item">
-                Create intuitive human-robot interaction interfaces
+                <div class="goal-number">02</div>
+                <p>Create intuitive human-robot interaction interfaces</p>
             </div>
             <div class="goal-item">
-                Advance AI capabilities for emotional recognition and response
+                <div class="goal-number">03</div>
+                <p>Advance AI capabilities for emotional recognition and response</p>
             </div>
             <div class="goal-item">
-                Establish partnerships with healthcare facilities for real-world testing
+                <div class="goal-number">04</div>
+                <p>Establish partnerships with healthcare facilities for real-world testing</p>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="events-section">
+    <!-- Events Section -->
+    <section class="events">
         <h2>Events & Activities</h2>
         <div class="events-grid">
             <div class="event-card">
-                <h3>Upcoming Event</h3>
-                <p><strong>Date:</strong> December 15, 2025</p>
-                <p><strong>Name:</strong> AI & Robotics Innovation Summit</p>
-                <div class="event-info">
-                    <p><strong>Time:</strong> 9:00 AM - 5:00 PM</p>
-                    <p><strong>Location:</strong> Tech Convention Center</p>
-                    <button class="rsvp-button" onclick="showRSVP('AI & Robotics Innovation Summit')">RSVP</button>
+                <div class="event-type">Upcoming Event</div>
+                <h3>AI & Robotics Innovation Summit</h3>
+                <div class="event-detail">
+                    <span class="event-detail-label">Date:</span>
+                    <span>December 15, 2025</span>
                 </div>
+                <div class="event-detail">
+                    <span class="event-detail-label">Time:</span>
+                    <span>9:00 AM - 5:00 PM</span>
+                </div>
+                <div class="event-detail">
+                    <span class="event-detail-label">Location:</span>
+                    <span>Tech Convention Center</span>
+                </div>
+                <button class="rsvp-btn" onclick="showRSVP('AI & Robotics Innovation Summit')">RSVP Now</button>
             </div>
             <div class="event-card">
-                <h3>Workshop</h3>
-                <p><strong>Date:</strong> January 10, 2026</p>
-                <p><strong>Name:</strong> Humanoid Robot Programming Workshop</p>
-                <div class="event-info">
-                    <p><strong>Time:</strong> 2:00 PM - 6:00 PM</p>
-                    <p><strong>Location:</strong> Innovation Lab Building B</p>
-                    <button class="rsvp-button" onclick="showRSVP('Humanoid Robot Programming Workshop')">RSVP</button>
+                <div class="event-type">Workshop</div>
+                <h3>Humanoid Robot Programming</h3>
+                <div class="event-detail">
+                    <span class="event-detail-label">Date:</span>
+                    <span>January 10, 2026</span>
                 </div>
+                <div class="event-detail">
+                    <span class="event-detail-label">Time:</span>
+                    <span>2:00 PM - 6:00 PM</span>
+                </div>
+                <div class="event-detail">
+                    <span class="event-detail-label">Location:</span>
+                    <span>Innovation Lab Building B</span>
+                </div>
+                <button class="rsvp-btn" onclick="showRSVP('Humanoid Robot Programming Workshop')">RSVP Now</button>
             </div>
             <div class="event-card">
-                <h3>Community Meet</h3>
-                <p><strong>Date:</strong> February 5, 2026</p>
-                <p><strong>Name:</strong> Robotics for Healthcare Forum</p>
-                <div class="event-info">
-                    <p><strong>Time:</strong> 10:00 AM - 3:00 PM</p>
-                    <p><strong>Location:</strong> Community Center Hall</p>
-                    <button class="rsvp-button" onclick="showRSVP('Robotics for Healthcare Forum')">RSVP</button>
+                <div class="event-type">Community</div>
+                <h3>Robotics for Healthcare Forum</h3>
+                <div class="event-detail">
+                    <span class="event-detail-label">Date:</span>
+                    <span>February 5, 2026</span>
                 </div>
+                <div class="event-detail">
+                    <span class="event-detail-label">Time:</span>
+                    <span>10:00 AM - 3:00 PM</span>
+                </div>
+                <div class="event-detail">
+                    <span class="event-detail-label">Location:</span>
+                    <span>Community Center Hall</span>
+                </div>
+                <button class="rsvp-btn" onclick="showRSVP('Robotics for Healthcare Forum')">RSVP Now</button>
             </div>
         </div>
-        <div style="margin-top: 2rem; text-align: center;">
-            <p><strong>Meeting times:</strong> Every Tuesday 6:00 PM - 8:00 PM</p>
-            <p><strong>Workshop hours:</strong> Saturdays 10:00 AM - 2:00 PM</p>
+        <div class="meeting-times">
+            <p><strong>Regular Meetings:</strong> Every Tuesday 6:00 PM - 8:00 PM</p>
+            <p><strong>Workshop Hours:</strong> Saturdays 10:00 AM - 2:00 PM</p>
         </div>
-    </div>
+    </section>
 
-    <div class="team-section">
+    <!-- Team Section -->
+    <section class="team">
         <h2>Our Team</h2>
         
         <div class="team-category">
             <h3>Co-Founders</h3>
-            <div class="team-grid">
-                <div class="team-member" onclick="showMemberInfo('Co-Founder', 'Alex Chen', 'Robotics Engineer & AI Specialist')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Co-Founder 1</h4>
+            <div class="team-grid cofounders-grid">
+                <div class="team-card" onclick="showMemberInfo('Co-Founder', 'Alex Chen', 'Robotics Engineer & AI Specialist with 15+ years experience')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Co-Founder</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
-                <div class="team-member" onclick="showMemberInfo('Co-Founder', 'Sarah Johnson', 'Healthcare Technology Expert')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Co-Founder 2</h4>
+                <div class="team-card" onclick="showMemberInfo('Co-Founder', 'Sarah Johnson', 'Healthcare Technology Expert and Innovation Leader')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Co-Founder</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="team-category">
             <h3>Executive Leaders</h3>
-            <div class="team-grid">
-                <div class="team-member" onclick="showMemberInfo('Executive Leader', 'Michael Torres', 'Operations Director')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Executive Leader 1</h4>
+            <div class="team-grid execs-grid">
+                <div class="team-card" onclick="showMemberInfo('Executive Leader', 'Michael Torres', 'Operations Director overseeing daily operations')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Executive Leader</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
-                <div class="team-member" onclick="showMemberInfo('Executive Leader', 'Emily Watson', 'Research Director')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Executive Leader 2</h4>
+                <div class="team-card" onclick="showMemberInfo('Executive Leader', 'Emily Watson', 'Research Director leading innovation initiatives')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Executive Leader</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="team-category">
-            <h3>Leadership Team</h3>
-            <div class="team-grid">
-                <div class="team-member" onclick="showMemberInfo('Leader', 'David Park', 'Software Team Lead')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Leader 1</h4>
+            <h3>Leadership</h3>
+            <div class="team-grid leaders-grid">
+                <div class="team-card" onclick="showMemberInfo('Leader', 'David Park', 'Software Team Lead')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Leader</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
-                <div class="team-member" onclick="showMemberInfo('Leader', 'Lisa Zhang', 'Hardware Team Lead')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Leader 2</h4>
+                <div class="team-card" onclick="showMemberInfo('Leader', 'Lisa Zhang', 'Hardware Team Lead')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Leader</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
-                <div class="team-member" onclick="showMemberInfo('Leader', 'James Miller', 'AI Research Lead')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Leader 3</h4>
+                <div class="team-card" onclick="showMemberInfo('Leader', 'James Miller', 'AI Research Lead')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Leader</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
-                <div class="team-member" onclick="showMemberInfo('Leader', 'Maria Garcia', 'Design Team Lead')">
-                    <div class="team-member-icon">👤</div>
-                    <h4>Leader 4</h4>
+                <div class="team-card" onclick="showMemberInfo('Leader', 'Maria Garcia', 'Design Team Lead')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Leader</h4>
+                        <p>Click to learn more</p>
+                    </div>
                 </div>
             </div>
         </div>
 
         <div class="team-category">
             <h3>Members</h3>
-            <div class="team-grid">
-                <div class="team-member">
-                    <div class="team-member-icon">👥</div>
-                    <h4>30+ Active Members</h4>
+            <div class="team-grid members-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👥</div>
+                    <div class="team-info">
+                        <h4>30+ Active Members</h4>
+                        <p>Passionate contributors from diverse backgrounds</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
+    <!-- Modals -->
     <div class="modal" id="rsvpModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('rsvpModal')">&times;</span>
-            <h2 style="color: #667eea; margin-bottom: 1.5rem;">RSVP for Event</h2>
-            <p id="eventName" style="margin-bottom: 1.5rem; font-size: 1.2rem;"></p>
-            <form>
-                <input type="text" placeholder="Your Name" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 5px;">
-                <input type="email" placeholder="Email" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 5px;">
-                <input type="tel" placeholder="Phone Number" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 5px;">
-                <button type="submit" class="rsvp-button" style="width: 100%;">Submit RSVP</button>
+            <h2>RSVP for Event</h2>
+            <p id="eventName" style="margin-bottom: 2rem; color: #999;"></p>
+            <form onsubmit="event.preventDefault(); alert('RSVP submitted!'); closeModal('rsvpModal');">
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Email Address" required>
+                <input type="tel" placeholder="Phone Number">
+                <button type="submit" class="rsvp-btn">Submit RSVP</button>
             </form>
         </div>
     </div>
@@ -581,9 +736,9 @@
     <div class="modal" id="memberModal">
         <div class="modal-content">
             <span class="close-modal" onclick="closeModal('memberModal')">&times;</span>
-            <h2 style="color: #667eea; margin-bottom: 1rem;" id="memberRole"></h2>
-            <h3 style="color: #764ba2; margin-bottom: 0.5rem;" id="memberName"></h3>
-            <p id="memberDescription"></p>
+            <h2 id="memberRole"></h2>
+            <h3 id="memberName" style="color: #fff; margin-bottom: 1rem;"></h3>
+            <p id="memberDescription" style="color: #999; line-height: 1.8;"></p>
         </div>
     </div>
 
@@ -609,16 +764,6 @@
                 event.target.style.display = 'none';
             }
         }
-
-        // Smooth scrolling
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
     </script>
 </body>
 </html>

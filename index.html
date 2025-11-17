@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Humanoid Robotics Initiative</title>
+    <title>Banana Bots - Humanoid Robotics Initiative</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -188,14 +188,14 @@
             position: absolute;
             inset: 0;
             background: linear-gradient(45deg, rgba(251, 191, 36, 0.1), transparent);
+            pointer-events: none;
         }
 
-        .image-placeholder {
-            padding: 3rem;
-            text-align: center;
-            color: #666;
-            font-size: 0.9rem;
-            z-index: 1;
+        .image-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 24px;
         }
 
         .hero-text {
@@ -470,14 +470,6 @@
             grid-template-columns: repeat(2, 1fr);
         }
 
-        .leaders-grid {
-            grid-template-columns: repeat(4, 1fr);
-        }
-
-        .members-grid {
-            grid-template-columns: 1fr;
-        }
-
         .team-card {
             background: #1a1a1a;
             border-radius: 12px;
@@ -643,22 +635,6 @@
             margin-bottom: 1rem;
         }
 
-        .skills-list {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            margin-top: 1rem;
-        }
-
-        .skill-tag {
-            background: rgba(251, 191, 36, 0.1);
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            color: #fbbf24;
-            font-size: 0.9rem;
-        }
-
         .contact-info {
             display: flex;
             gap: 1rem;
@@ -684,33 +660,6 @@
         .contact-button:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 1.5rem;
-            margin-top: 1.5rem;
-        }
-
-        .stat-item {
-            text-align: center;
-            padding: 1.5rem;
-            background: rgba(251, 191, 36, 0.05);
-            border-radius: 12px;
-            border: 1px solid rgba(251, 191, 36, 0.1);
-        }
-
-        .stat-number {
-            font-size: 2rem;
-            font-weight: 700;
-            color: #fbbf24;
-            margin-bottom: 0.5rem;
-        }
-
-        .stat-label {
-            font-size: 0.9rem;
-            color: #999;
         }
 
         .team-avatar {
@@ -871,9 +820,7 @@
         <section class="hero">
             <div class="hero-image fade-in-left">
                 <div class="image-container">
-                    <div class="image-placeholder">
-                        <img src="humanoid_robot.png" alt="Humanoid robot helping elderly lady walk" style="width: 500px;>
-                    </div>
+                    <img src="humanoid_robot.png" alt="Humanoid robot helping elderly lady walk">
                 </div>
             </div>
             <div class="hero-text fade-in-right">
@@ -894,9 +841,7 @@
             </div>
             <div class="hero-image fade-in-right">
                 <div class="image-container">
-                    <div class="image-placeholder">
-                        <img src="bot.jpg" alt="Picture of bananabot" style="width: 500px;>
-                    </div>
+                    <img src="bot.jpg" alt="Picture of BananaBot">
                 </div>
             </div>
         </section>
@@ -1002,135 +947,132 @@
 
     <!-- Team Page -->
     <div id="team-page" class="page">
-
-    <!-- Team Section -->
-    <section class="team">
-        <h2 class="fade-in">Our Team</h2>
-        
-        <div class="team-category fade-in">
-            <h3>Co-Founders</h3>
-            <div class="team-grid cofounders-grid">
-                <div class="team-card stagger-item delay-1" onclick="showExpandedMember('cofounder1')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>Arya Jangity</h4>
-                        <p>Co-Founder</p>
+        <!-- Team Section -->
+        <section class="team">
+            <h2 class="fade-in">Our Team</h2>
+            
+            <div class="team-category fade-in">
+                <h3>Co-Founders</h3>
+                <div class="team-grid cofounders-grid">
+                    <div class="team-card stagger-item delay-1" onclick="showExpandedMember('cofounder1')">
+                        <div class="team-avatar">👤</div>
+                        <div class="team-info">
+                            <h4>Arya Jangity</h4>
+                            <p>Co-Founder</p>
+                        </div>
                     </div>
-                </div>
-                <div class="team-card stagger-item delay-2" onclick="showExpandedMember('cofounder2')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>Zaraa Abba</h4>
-                        <p>Co-Founder</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="team-category fade-in">
-            <h3>Software Leads</h3>
-            <div class="team-grid execs-grid">
-                <div class="team-card stagger-item delay-1" onclick="showExpandedMember('exec1')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>Vihari Tejomurtula</h4>
-                        <p>Software Lead</p>
-                    </div>
-                </div>
-                <div class="team-card stagger-item delay-2" onclick="showExpandedMember('exec2')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>Raksshana Harish Babu</h4>
-                        <p>Software Lead</p>
+                    <div class="team-card stagger-item delay-2" onclick="showExpandedMember('cofounder2')">
+                        <div class="team-avatar">👤</div>
+                        <div class="team-info">
+                            <h4>Zaraa Abba</h4>
+                            <p>Co-Founder</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Team Member Expanded Views -->
-    <div class="team-member-expanded" id="expanded-cofounder1">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('cofounder1')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>Arya Jangity</h2>
-                <h3>Co-Founder</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>Arya is a co-founder of Banana Bots, bringing passion and expertise to the field of humanoid robotics.</p>
+            <div class="team-category fade-in">
+                <h3>Software Leads</h3>
+                <div class="team-grid execs-grid">
+                    <div class="team-card stagger-item delay-1" onclick="showExpandedMember('exec1')">
+                        <div class="team-avatar">👤</div>
+                        <div class="team-info">
+                            <h4>Vihari Tejomurtula</h4>
+                            <p>Software Lead</p>
+                        </div>
+                    </div>
+                    <div class="team-card stagger-item delay-2" onclick="showExpandedMember('exec2')">
+                        <div class="team-avatar">👤</div>
+                        <div class="team-info">
+                            <h4>Raksshana Harish Babu</h4>
+                            <p>Software Lead</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="contact-info">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajangity@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
-                    <a href="http://www.linkedin.com/in/arya-jangity-909539292" target="_blank" class="contact-button">View LinkedIn</a>
+            </div>
+        </section>
+
+        <!-- Team Member Expanded Views -->
+        <div class="team-member-expanded" id="expanded-cofounder1">
+            <div class="expanded-content">
+                <div class="expanded-header">
+                    <span class="close-expanded" onclick="closeExpanded('cofounder1')">&times;</span>
+                    <div class="expanded-avatar">👤</div>
+                    <h2>Arya Jangity</h2>
+                    <h3>Co-Founder</h3>
+                </div>
+                <div class="expanded-body">
+                    <div class="about-section-expanded">
+                        <h4>About</h4>
+                        <p>Arya is a co-founder of Banana Bots, bringing passion and expertise to the field of humanoid robotics.</p>
+                    </div>
+                    <div class="contact-info">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajangity@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
+                        <a href="http://www.linkedin.com/in/arya-jangity-909539292" target="_blank" class="contact-button">View LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member-expanded" id="expanded-cofounder2">
+            <div class="expanded-content">
+                <div class="expanded-header">
+                    <span class="close-expanded" onclick="closeExpanded('cofounder2')">&times;</span>
+                    <div class="expanded-avatar">👤</div>
+                    <h2>Zaraa Abba</h2>
+                    <h3>Co-Founder</h3>
+                </div>
+                <div class="expanded-body">
+                    <div class="about-section-expanded">
+                        <h4>About</h4>
+                        <p>Zaraa is a co-founder of Banana Bots, dedicated to advancing humanoid robotics technology.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member-expanded" id="expanded-exec1">
+            <div class="expanded-content">
+                <div class="expanded-header">
+                    <span class="close-expanded" onclick="closeExpanded('exec1')">&times;</span>
+                    <div class="expanded-avatar">👤</div>
+                    <h2>Vihari Tejomurtula</h2>
+                    <h3>Software Lead</h3>
+                </div>
+                <div class="expanded-body">
+                    <div class="about-section-expanded">
+                        <h4>About</h4>
+                        <p>Vihari is a Software Lead at Banana Bots, bringing technical expertise to the development of our robotics systems.</p>
+                    </div>
+                    <div class="contact-info">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vtejomur@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
+                        <a href="http://www.linkedin.com/in/vihari-t-9090982b1" target="_blank" class="contact-button">View LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-member-expanded" id="expanded-exec2">
+            <div class="expanded-content">
+                <div class="expanded-header">
+                    <span class="close-expanded" onclick="closeExpanded('exec2')">&times;</span>
+                    <div class="expanded-avatar">👤</div>
+                    <h2>Raksshana Harish Babu</h2>
+                    <h3>Software Lead</h3>
+                </div>
+                <div class="expanded-body">
+                    <div class="about-section-expanded">
+                        <h4>About</h4>
+                        <p>Raksshana is a Software Lead at Banana Bots, contributing to the development of innovative robotics solutions.</p>
+                    </div>
+                    <div class="contact-info">
+                        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rharishb@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
+                        <a href="http://www.linkedin.com/in/raksshana-harish-babu-551a2a245" target="_blank" class="contact-button">View LinkedIn</a>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="team-member-expanded" id="expanded-cofounder2">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('cofounder2')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>Zaraa Abba</h2>
-                <h3>Co-Founder</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>Zaraa is a co-founder of Banana Bots, dedicated to advancing humanoid robotics technology.</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team-member-expanded" id="expanded-exec1">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('exec1')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>Vihari Tejomurtula</h2>
-                <h3>Software Lead</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>Vihari is a Software Lead at Banana Bots, bringing technical expertise to the development of our robotics systems.</p>
-                </div>
-                <div class="contact-info">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vtejomur@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
-                    <a href="http://www.linkedin.com/in/vihari-t-9090982b1" target="_blank" class="contact-button">View LinkedIn</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team-member-expanded" id="expanded-exec2">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('exec2')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>Raksshana Harish Babu</h2>
-                <h3>Software Lead</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>Raksshana is a Software Lead at Banana Bots, contributing to the development of innovative robotics solutions.</p>
-                </div>
-                <div class="contact-info">
-                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rharishb@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
-                    <a href="http://www.linkedin.com/in/raksshana-harish-babu-551a2a245" target="_blank" class="contact-button">View LinkedIn</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    </div>
-    <!-- End Team Page -->
 
     <!-- Modals -->
     <div class="modal" id="rsvpModal">

@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanoid Robot Initiative</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            max-width: 1200px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 4rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-image-placeholder {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            color: #667eea;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+        }
+
+        .section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vision-section {
+            background: white;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .vision-text h2 {
+            font-size: 2.5rem;
+            color: #764ba2;
+            margin-bottom: 1.5rem;
+        }
+
+        .vision-text p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .vision-image {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            border-radius: 15px;
+            padding: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .vision-image-placeholder {
+            width: 100%;
+            max-width: 300px;
+            aspect-ratio: 1;
+            background: white;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #666;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .about-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .about-section p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto 1.5rem;
+        }
+
+        .goals-section {
+            background: white;
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .goals-section h2 {
+            font-size: 2.5rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .goals-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .goal-item {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .goal-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .goal-item::before {
+            content: "✓";
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: white;
+            color: #667eea;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 1rem;
+            font-weight: bold;
+        }
+
+        .events-section {
+            background: white;
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .events-section h2 {
+            font-size: 2.5rem;
+            color: #764ba2;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .event-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            color: white;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .event-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .event-card p {
+            margin-bottom: 0.5rem;
+        }
+
+        .event-info {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+
+        .rsvp-button {
+            background: white;
+            color: #f5576c;
+            border: none;
+            padding: 0.8rem 2rem;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .rsvp-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-section {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 4rem;
+            border-radius: 20px;
+            margin: 2rem;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-section h2 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .team-category {
+            margin-bottom: 3rem;
+        }
+
+        .team-category h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+
+        .team-member {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .team-member-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: white;
+        }
+
+        .team-member h4 {
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 90%;
+            position: relative;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .hero-content,
+            .vision-section {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .scroll-indicator {
+            text-align: center;
+            padding: 2rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .scroll-arrow {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-10px);
+            }
+            60% {
+                transform: translateY(-5px);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-image">
+                <div class="hero-image-placeholder">
+                    Picture of humanoid robot helping elderly lady walk
+                </div>
+            </div>
+            <div class="hero-text">
+                <h1>Mission</h1>
+                <p>Advancing humanoid robotics to enhance quality of life and support our communities through innovative technology.</p>
+                <p>Empowering individuals with cutting-edge robotic assistance for daily living.</p>
+                <p>Building a future where humans and robots work together harmoniously.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-indicator">
+        <div class="scroll-arrow">↓</div>
+        <div>Scroll down to explore</div>
+    </div>
+
+    <div class="vision-section">
+        <div class="vision-text">
+            <h2>Vision</h2>
+            <p>We envision a world where humanoid robots seamlessly integrate into daily life, providing support, companionship, and assistance to those who need it most.</p>
+            <p>Through advanced AI and robotics, we're creating intelligent machines that understand human needs and respond with compassion.</p>
+            <p>Our vision extends beyond technology—it's about building connections and improving lives.</p>
+        </div>
+        <div class="vision-image">
+            <div class="vision-image-placeholder">
+                Picture of BananaBot: humanoid robot dark and mysterious AI-generated image
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2>About Us</h2>
+        <p>We are a dedicated team of engineers, researchers, and innovators passionate about the intersection of robotics and human care. Our organization was founded on the belief that technology should serve humanity in meaningful ways.</p>
+        <p>With years of combined experience in AI, robotics, and healthcare technology, we're pushing the boundaries of what's possible in humanoid robotics.</p>
+        <p>Our collaborative approach brings together diverse perspectives to create solutions that truly make a difference in people's lives.</p>
+    </div>
+
+    <div class="goals-section">
+        <h2>Goals</h2>
+        <div class="goals-list">
+            <div class="goal-item">
+                Develop safe and reliable humanoid robots for elderly care assistance
+            </div>
+            <div class="goal-item">
+                Create intuitive human-robot interaction interfaces
+            </div>
+            <div class="goal-item">
+                Advance AI capabilities for emotional recognition and response
+            </div>
+            <div class="goal-item">
+                Establish partnerships with healthcare facilities for real-world testing
+            </div>
+        </div>
+    </div>
+
+    <div class="events-section">
+        <h2>Events & Activities</h2>
+        <div class="events-grid">
+            <div class="event-card">
+                <h3>Upcoming Event</h3>
+                <p><strong>Date:</strong> December 15, 2025</p>
+                <p><strong>Name:</strong> AI & Robotics Innovation Summit</p>
+                <div class="event-info">
+                    <p><strong>Time:</strong> 9:00 AM - 5:00 PM</p>
+                    <p><strong>Location:</strong> Tech Convention Center</p>
+                    <button class="rsvp-button" onclick="showRSVP('AI & Robotics Innovation Summit')">RSVP</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <h3>Workshop</h3>
+                <p><strong>Date:</strong> January 10, 2026</p>
+                <p><strong>Name:</strong> Humanoid Robot Programming Workshop</p>
+                <div class="event-info">
+                    <p><strong>Time:</strong> 2:00 PM - 6:00 PM</p>
+                    <p><strong>Location:</strong> Innovation Lab Building B</p>
+                    <button class="rsvp-button" onclick="showRSVP('Humanoid Robot Programming Workshop')">RSVP</button>
+                </div>
+            </div>
+            <div class="event-card">
+                <h3>Community Meet</h3>
+                <p><strong>Date:</strong> February 5, 2026</p>
+                <p><strong>Name:</strong> Robotics for Healthcare Forum</p>
+                <div class="event-info">
+                    <p><strong>Time:</strong> 10:00 AM - 3:00 PM</p>
+                    <p><strong>Location:</strong> Community Center Hall</p>
+                    <button class="rsvp-button" onclick="showRSVP('Robotics for Healthcare Forum')">RSVP</button>
+                </div>
+            </div>
+        </div>
+        <div style="margin-top: 2rem; text-align: center;">
+            <p><strong>Meeting times:</strong> Every Tuesday 6:00 PM - 8:00 PM</p>
+            <p><strong>Workshop hours:</strong> Saturdays 10:00 AM - 2:00 PM</p>
+        </div>
+    </div>
+
+    <div class="team-section">
+        <h2>Our Team</h2>
+        
+        <div class="team-category">
+            <h3>Co-Founders</h3>
+            <div class="team-grid">
+                <div class="team-member" onclick="showMemberInfo('Co-Founder', 'Alex Chen', 'Robotics Engineer & AI Specialist')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Co-Founder 1</h4>
+                </div>
+                <div class="team-member" onclick="showMemberInfo('Co-Founder', 'Sarah Johnson', 'Healthcare Technology Expert')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Co-Founder 2</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-category">
+            <h3>Executive Leaders</h3>
+            <div class="team-grid">
+                <div class="team-member" onclick="showMemberInfo('Executive Leader', 'Michael Torres', 'Operations Director')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Executive Leader 1</h4>
+                </div>
+                <div class="team-member" onclick="showMemberInfo('Executive Leader', 'Emily Watson', 'Research Director')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Executive Leader 2</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-category">
+            <h3>Leadership Team</h3>
+            <div class="team-grid">
+                <div class="team-member" onclick="showMemberInfo('Leader', 'David Park', 'Software Team Lead')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Leader 1</h4>
+                </div>
+                <div class="team-member" onclick="showMemberInfo('Leader', 'Lisa Zhang', 'Hardware Team Lead')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Leader 2</h4>
+                </div>
+                <div class="team-member" onclick="showMemberInfo('Leader', 'James Miller', 'AI Research Lead')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Leader 3</h4>
+                </div>
+                <div class="team-member" onclick="showMemberInfo('Leader', 'Maria Garcia', 'Design Team Lead')">
+                    <div class="team-member-icon">👤</div>
+                    <h4>Leader 4</h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-category">
+            <h3>Members</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="team-member-icon">👥</div>
+                    <h4>30+ Active Members</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="rsvpModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('rsvpModal')">&times;</span>
+            <h2 style="color: #667eea; margin-bottom: 1.5rem;">RSVP for Event</h2>
+            <p id="eventName" style="margin-bottom: 1.5rem; font-size: 1.2rem;"></p>
+            <form>
+                <input type="text" placeholder="Your Name" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 5px;">
+                <input type="email" placeholder="Email" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 5px;">
+                <input type="tel" placeholder="Phone Number" style="width: 100%; padding: 0.8rem; margin-bottom: 1rem; border: 2px solid #ddd; border-radius: 5px;">
+                <button type="submit" class="rsvp-button" style="width: 100%;">Submit RSVP</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="memberModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('memberModal')">&times;</span>
+            <h2 style="color: #667eea; margin-bottom: 1rem;" id="memberRole"></h2>
+            <h3 style="color: #764ba2; margin-bottom: 0.5rem;" id="memberName"></h3>
+            <p id="memberDescription"></p>
+        </div>
+    </div>
+
+    <script>
+        function showRSVP(eventName) {
+            document.getElementById('eventName').textContent = eventName;
+            document.getElementById('rsvpModal').style.display = 'flex';
+        }
+
+        function showMemberInfo(role, name, description) {
+            document.getElementById('memberRole').textContent = role;
+            document.getElementById('memberName').textContent = name;
+            document.getElementById('memberDescription').textContent = description;
+            document.getElementById('memberModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.style.display = 'none';
+            }
+        }
+
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

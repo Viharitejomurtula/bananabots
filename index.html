@@ -675,6 +675,10 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .contact-button:hover {
@@ -867,7 +871,9 @@
         <section class="hero">
             <div class="hero-image fade-in-left">
                 <div class="image-container">
-                    <img src="humanoid_robot.png" alt="Humanoid robot helping elderly lady walk" style ="width: 500px;">
+                    <div class="image-placeholder">
+                        Picture of humanoid robot helping elderly lady walk
+                    </div>
                 </div>
             </div>
             <div class="hero-text fade-in-right">
@@ -1007,14 +1013,14 @@
                 <div class="team-card stagger-item delay-1" onclick="showExpandedMember('cofounder1')">
                     <div class="team-avatar">👤</div>
                     <div class="team-info">
-                        <h4>Alex Chen</h4>
+                        <h4>Arya Jangity</h4>
                         <p>Co-Founder</p>
                     </div>
                 </div>
                 <div class="team-card stagger-item delay-2" onclick="showExpandedMember('cofounder2')">
                     <div class="team-avatar">👤</div>
                     <div class="team-info">
-                        <h4>Sarah Johnson</h4>
+                        <h4>Zaraa Abba</h4>
                         <p>Co-Founder</p>
                     </div>
                 </div>
@@ -1022,67 +1028,20 @@
         </div>
 
         <div class="team-category fade-in">
-            <h3>Executive Leaders</h3>
+            <h3>Software Leads</h3>
             <div class="team-grid execs-grid">
                 <div class="team-card stagger-item delay-1" onclick="showExpandedMember('exec1')">
                     <div class="team-avatar">👤</div>
                     <div class="team-info">
-                        <h4>Michael Torres</h4>
-                        <p>Executive Leader</p>
+                        <h4>Vihari Tejomurtula</h4>
+                        <p>Software Lead</p>
                     </div>
                 </div>
                 <div class="team-card stagger-item delay-2" onclick="showExpandedMember('exec2')">
                     <div class="team-avatar">👤</div>
                     <div class="team-info">
-                        <h4>Emily Watson</h4>
-                        <p>Executive Leader</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="team-category fade-in">
-            <h3>Leadership</h3>
-            <div class="team-grid leaders-grid">
-                <div class="team-card stagger-item delay-1" onclick="showExpandedMember('leader1')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>David Park</h4>
-                        <p>Leader</p>
-                    </div>
-                </div>
-                <div class="team-card stagger-item delay-2" onclick="showExpandedMember('leader2')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>Lisa Zhang</h4>
-                        <p>Leader</p>
-                    </div>
-                </div>
-                <div class="team-card stagger-item delay-3" onclick="showExpandedMember('leader3')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>James Miller</h4>
-                        <p>Leader</p>
-                    </div>
-                </div>
-                <div class="team-card stagger-item delay-4" onclick="showExpandedMember('leader4')">
-                    <div class="team-avatar">👤</div>
-                    <div class="team-info">
-                        <h4>Maria Garcia</h4>
-                        <p>Leader</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="team-category fade-in">
-            <h3>Members</h3>
-            <div class="team-grid members-grid">
-                <div class="team-card scale-in">
-                    <div class="team-avatar">👥</div>
-                    <div class="team-info">
-                        <h4>30+ Active Members</h4>
-                        <p>Passionate contributors from diverse backgrounds</p>
+                        <h4>Raksshana Harish Babu</h4>
+                        <p>Software Lead</p>
                     </div>
                 </div>
             </div>
@@ -1095,46 +1054,17 @@
             <div class="expanded-header">
                 <span class="close-expanded" onclick="closeExpanded('cofounder1')">&times;</span>
                 <div class="expanded-avatar">👤</div>
-                <h2>Alex Chen</h2>
-                <h3>Co-Founder & Chief Robotics Officer</h3>
+                <h2>Arya Jangity</h2>
+                <h3>Co-Founder</h3>
             </div>
             <div class="expanded-body">
                 <div class="about-section-expanded">
                     <h4>About</h4>
-                    <p>Alex is a visionary robotics engineer with over 15 years of experience in humanoid robotics and artificial intelligence. With a Ph.D. in Robotics from MIT, Alex has pioneered breakthrough technologies in human-robot interaction and autonomous systems.</p>
-                    <p>Before co-founding our organization, Alex led the robotics division at a Fortune 500 tech company, where they developed award-winning assistive robotics systems used in hospitals worldwide.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Humanoid Robotics</span>
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">ROS</span>
-                        <span class="skill-tag">Neural Networks</span>
-                        <span class="skill-tag">Motion Planning</span>
-                    </div>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Achievements</h4>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">15+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">50+</div>
-                            <div class="stat-label">Patents Filed</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">100+</div>
-                            <div class="stat-label">Publications</div>
-                        </div>
-                    </div>
+                    <p>Arya is a co-founder of Banana Bots, bringing passion and expertise to the field of humanoid robotics.</p>
                 </div>
                 <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                    <button class="contact-button">View LinkedIn</button>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=ajangity@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
+                    <a href="http://www.linkedin.com/in/arya-jangity-909539292" target="_blank" class="contact-button">View LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -1145,46 +1075,13 @@
             <div class="expanded-header">
                 <span class="close-expanded" onclick="closeExpanded('cofounder2')">&times;</span>
                 <div class="expanded-avatar">👤</div>
-                <h2>Sarah Johnson</h2>
-                <h3>Co-Founder & Chief Medical Technology Officer</h3>
+                <h2>Zaraa Abba</h2>
+                <h3>Co-Founder</h3>
             </div>
             <div class="expanded-body">
                 <div class="about-section-expanded">
                     <h4>About</h4>
-                    <p>Sarah brings a unique blend of medical expertise and technology innovation to our organization. With an MD from Johns Hopkins and an MS in Biomedical Engineering from Stanford, Sarah has dedicated her career to developing technology that improves patient care and quality of life.</p>
-                    <p>Her work in elderly care technology has been recognized internationally, earning her numerous awards including the Healthcare Innovation Award from the WHO.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Healthcare Technology</span>
-                        <span class="skill-tag">Geriatric Care</span>
-                        <span class="skill-tag">Medical Robotics</span>
-                        <span class="skill-tag">UX Design</span>
-                        <span class="skill-tag">Clinical Research</span>
-                        <span class="skill-tag">Patient Safety</span>
-                    </div>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Achievements</h4>
-                    <div class="stats-grid">
-                        <div class="stat-item">
-                            <div class="stat-number">12+</div>
-                            <div class="stat-label">Years Experience</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">25+</div>
-                            <div class="stat-label">Clinical Trials</div>
-                        </div>
-                        <div class="stat-item">
-                            <div class="stat-number">10K+</div>
-                            <div class="stat-label">Patients Helped</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                    <button class="contact-button">View LinkedIn</button>
+                    <p>Zaraa is a co-founder of Banana Bots, dedicated to advancing humanoid robotics technology.</p>
                 </div>
             </div>
         </div>
@@ -1195,28 +1092,17 @@
             <div class="expanded-header">
                 <span class="close-expanded" onclick="closeExpanded('exec1')">&times;</span>
                 <div class="expanded-avatar">👤</div>
-                <h2>Michael Torres</h2>
-                <h3>Operations Director</h3>
+                <h2>Vihari Tejomurtula</h2>
+                <h3>Software Lead</h3>
             </div>
             <div class="expanded-body">
                 <div class="about-section-expanded">
                     <h4>About</h4>
-                    <p>Michael is an experienced operations leader who ensures our organization runs smoothly and efficiently. With an MBA from Wharton and 10+ years in tech operations, Michael has a proven track record of scaling innovative technology companies.</p>
-                    <p>He specializes in building high-performance teams and implementing agile processes that accelerate product development while maintaining quality standards.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Operations Management</span>
-                        <span class="skill-tag">Team Building</span>
-                        <span class="skill-tag">Agile Methodology</span>
-                        <span class="skill-tag">Strategic Planning</span>
-                        <span class="skill-tag">Budget Management</span>
-                    </div>
+                    <p>Vihari is a Software Lead at Banana Bots, bringing technical expertise to the development of our robotics systems.</p>
                 </div>
                 <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                    <button class="contact-button">View LinkedIn</button>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vtejomur@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
+                    <a href="http://www.linkedin.com/in/vihari-t-9090982b1" target="_blank" class="contact-button">View LinkedIn</a>
                 </div>
             </div>
         </div>
@@ -1227,152 +1113,22 @@
             <div class="expanded-header">
                 <span class="close-expanded" onclick="closeExpanded('exec2')">&times;</span>
                 <div class="expanded-avatar">👤</div>
-                <h2>Emily Watson</h2>
-                <h3>Research Director</h3>
+                <h2>Raksshana Harish Babu</h2>
+                <h3>Software Lead</h3>
             </div>
             <div class="expanded-body">
                 <div class="about-section-expanded">
                     <h4>About</h4>
-                    <p>Emily leads our research initiatives, driving innovation in AI and robotics. With a Ph.D. in Artificial Intelligence from Carnegie Mellon, Emily has published extensively in top-tier conferences and journals.</p>
-                    <p>Her research focuses on emotional AI and creating robots that can understand and respond to human emotions with appropriate empathy and support.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Artificial Intelligence</span>
-                        <span class="skill-tag">Emotional Computing</span>
-                        <span class="skill-tag">Research Management</span>
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">NLP</span>
-                    </div>
+                    <p>Raksshana is a Software Lead at Banana Bots, contributing to the development of innovative robotics solutions.</p>
                 </div>
                 <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                    <button class="contact-button">View LinkedIn</button>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=rharishb@ucsc.edu" target="_blank" class="contact-button">Send Message</a>
+                    <a href="http://www.linkedin.com/in/raksshana-harish-babu-551a2a245" target="_blank" class="contact-button">View LinkedIn</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="team-member-expanded" id="expanded-leader1">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('leader1')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>David Park</h2>
-                <h3>Software Team Lead</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>David leads our software development team, overseeing the creation of robust, scalable systems that power our humanoid robots. With 8+ years of experience in robotics software, David is an expert in real-time systems and embedded programming.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">C++/Python</span>
-                        <span class="skill-tag">ROS 2</span>
-                        <span class="skill-tag">Real-time Systems</span>
-                        <span class="skill-tag">Software Architecture</span>
-                        <span class="skill-tag">DevOps</span>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team-member-expanded" id="expanded-leader2">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('leader2')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>Lisa Zhang</h2>
-                <h3>Hardware Team Lead</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>Lisa oversees all hardware design and development, ensuring our robots are both powerful and safe. Her background in mechanical and electrical engineering makes her uniquely qualified to lead our interdisciplinary hardware team.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Mechanical Design</span>
-                        <span class="skill-tag">Electronics</span>
-                        <span class="skill-tag">Actuator Systems</span>
-                        <span class="skill-tag">CAD/CAM</span>
-                        <span class="skill-tag">Prototyping</span>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team-member-expanded" id="expanded-leader3">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('leader3')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>James Miller</h2>
-                <h3>AI Research Lead</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>James specializes in developing cutting-edge AI models for robot perception, decision-making, and learning. His work in reinforcement learning has enabled our robots to adapt to new environments and tasks autonomously.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">Machine Learning</span>
-                        <span class="skill-tag">Reinforcement Learning</span>
-                        <span class="skill-tag">Computer Vision</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Model Optimization</span>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="team-member-expanded" id="expanded-leader4">
-        <div class="expanded-content">
-            <div class="expanded-header">
-                <span class="close-expanded" onclick="closeExpanded('leader4')">&times;</span>
-                <div class="expanded-avatar">👤</div>
-                <h2>Maria Garcia</h2>
-                <h3>Design Team Lead</h3>
-            </div>
-            <div class="expanded-body">
-                <div class="about-section-expanded">
-                    <h4>About</h4>
-                    <p>Maria leads our design team, focusing on creating intuitive, human-centered interfaces for our robots. Her background in industrial design and HCI ensures our robots are not only functional but also approachable and easy to use.</p>
-                </div>
-                <div class="about-section-expanded">
-                    <h4>Expertise</h4>
-                    <div class="skills-list">
-                        <span class="skill-tag">UX/UI Design</span>
-                        <span class="skill-tag">Industrial Design</span>
-                        <span class="skill-tag">Human-Computer Interaction</span>
-                        <span class="skill-tag">User Research</span>
-                        <span class="skill-tag">Prototyping</span>
-                    </div>
-                </div>
-                <div class="contact-info">
-                    <button class="contact-button">Send Message</button>
-                </div>
-            </div>
-        </div>
-    </div>
     </div>
     <!-- End Team Page -->
 

@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Humanoid Robotics Initiative - Our Team</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #0a0a0a;
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 4.5rem;
+        }
+
+        /* --- NAVIGATION BAR STYLES --- */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 6rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fbbf24;
+            text-decoration: none;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links a {
+            color: #ccc;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active { /* Added active state for the current page */
+            color: #fbbf24;
+        }
+        /* ---------------------------------- */
+
+        /* Team Section */
+        .team {
+            padding: 8rem 6rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            min-height: 90vh; /* Ensures content fills the page */
+        }
+
+        .team h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .team-category {
+            margin-bottom: 4rem;
+        }
+
+        .team-category h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #fbbf24;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .team-grid {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .cofounders-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .execs-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .leaders-grid {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .members-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .team-card {
+            background: #1a1a1a;
+            border-radius: 12px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            perspective: 1000px;
+        }
+
+        .team-card:hover {
+            border-color: rgba(251, 191, 36, 0.3);
+            transform: translateX(4px);
+        }
+
+        .team-card.flipping {
+            animation: flipOut 0.6s ease-in-out;
+        }
+
+        @keyframes flipOut {
+            0% {
+                transform: rotateY(0deg);
+                opacity: 1;
+            }
+            50% {
+                transform: rotateY(90deg);
+                opacity: 0.5;
+            }
+            100% {
+                transform: rotateY(90deg);
+                opacity: 0;
+            }
+        }
+
+        .team-member-expanded {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        .team-member-expanded.active {
+            display: flex;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .expanded-content {
+            background: #1a1a1a;
+            border-radius: 24px;
+            max-width: 800px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            border: 1px solid rgba(251, 191, 36, 0.2);
+            position: relative;
+            animation: slideIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            transform-origin: center;
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: scale(0.5) rotateY(90deg);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1) rotateY(0deg);
+                opacity: 1;
+            }
+        }
+
+        .expanded-header {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            padding: 3rem;
+            border-radius: 24px 24px 0 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .close-expanded {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 2rem;
+            cursor: pointer;
+            color: white;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .close-expanded:hover {
+            background: rgba(0, 0, 0, 0.4);
+            transform: rotate(90deg);
+        }
+
+        .expanded-avatar {
+            width: 120px;
+            height: 120px;
+            background: white;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .expanded-header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .expanded-header h3 {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 400;
+        }
+
+        .expanded-body {
+            padding: 3rem;
+        }
+
+        .about-section-expanded {
+            margin-bottom: 2.5rem;
+        }
+
+        .about-section-expanded h4 {
+            font-size: 1.1rem;
+            color: #fbbf24;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .about-section-expanded p {
+            color: #ccc;
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 1rem;
+        }
+
+        .skill-tag {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            color: #fbbf24;
+            font-size: 0.9rem;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .contact-button {
+            flex: 1;
+            padding: 0.9rem;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(251, 191, 36, 0.4);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(251, 191, 36, 0.05);
+            border-radius: 12px;
+            border: 1px solid rgba(251, 191, 36, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fbbf24;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #999;
+        }
+
+        .team-avatar {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .team-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+        }
+
+        .team-info p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Removed modal styling and media queries not relevant to this page for brevity, but you should keep them consistent. 
+        I am keeping the responsive grid layouts and team-specific styles. */
+
+        @media (max-width: 1024px) {
+            .team {
+                padding: 4rem 2rem;
+            }
+            .team-grid {
+                grid-template-columns: 1fr !important;
+            }
+            /* Mobile Nav Adjustments */
+            .navbar {
+                padding: 1rem 2rem;
+            }
+            .nav-links {
+                gap: 1.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .team h2 {
+                font-size: 2rem;
+            }
+            /* Mobile Nav Adjustments */
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 1rem 2rem;
+            }
+            .nav-links {
+                margin-top: 0.5rem;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+            body {
+                padding-top: 6rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="index.html" class="nav-logo">Humanoid Robotics</a>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="index.html#goals">Goals</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="team.html" class="active">Our Team</a></li>
+        </ul>
+    </nav>
+
+        <section class="team" id="team">
+        <h2>Our Team</h2>
+        
+        <div class="team-category">
+            <h3>Co-Founders</h3>
+            <div class="team-grid cofounders-grid">
+                <div class="team-card" onclick="showExpandedMember('cofounder1')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Alex Chen</h4>
+                        <p>Co-Founder</p>
+                    </div>
+                </div>
+                <div class="team-card" onclick="showExpandedMember('cofounder2')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Sarah Johnson</h4>
+                        <p>Co-Founder</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-category">
+            <h3>Executive Leaders</h3>
+            <div class="team-grid execs-grid">
+                <div class="team-card" onclick="showExpandedMember('exec1')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Michael Torres</h4>
+                        <p>Operations Director</p>
+                    </div>
+                </div>
+                <div class="team-card" onclick="showExpandedMember('exec2')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Emily Watson</h4>
+                        <p>Research Director</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-category">
+            <h3>Leadership</h3>
+            <div class="team-grid leaders-grid">
+                <div class="team-card" onclick="showExpandedMember('leader1')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>David Park</h4>
+                        <p>Software Team Lead</p>
+                    </div>
+                </div>
+                <div class="team-card" onclick="showExpandedMember('leader2')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Lisa Zhang</h4>
+                        <p>Hardware Team Lead</p>
+                    </div>
+                </div>
+                <div class="team-card" onclick="showExpandedMember('leader3')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>James Miller</h4>
+                        <p>AI Research Lead</p>
+                    </div>
+                </div>
+                <div class="team-card" onclick="showExpandedMember('leader4')">
+                    <div class="team-avatar">👤</div>
+                    <div class="team-info">
+                        <h4>Maria Garcia</h4>
+                        <p>Design Team Lead</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="team-category">
+            <h3>Members</h3>
+            <div class="team-grid members-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👥</div>
+                    <div class="team-info">
+                        <h4>30+ Active Members</h4>
+                        <p>Passionate contributors from diverse backgrounds</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <div class="team-member-expanded" id="expanded-cofounder1">
+        <div class="expanded-content">
+            <div class="expanded-header">
+                <span class="close-expanded" onclick="closeExpanded('cofounder1')">&times;</span>
+                <div class="expanded-avatar">👤</div>
+                <h2>Alex Chen</h2>
+                <h3>Co-Founder & Chief Robotics Officer</h3>
+            </div>
+            <div class="expanded-body">
+                <div class="about-section-expanded">
+                    <h4>About</h4>
+                    <p>Alex is a visionary robotics engineer with over 15 years of experience in humanoid robotics and artificial intelligence. With a Ph.D. in Robotics from MIT, Alex has pioneered breakthrough technologies in human-robot interaction and autonomous systems.</p>
+                    <p>Before co-founding our organization, Alex led the robotics division at a Fortune 500 tech company, where they developed award-winning assistive robotics systems used in hospitals worldwide.</p>
+                </div>
+                <div class="about-section-expanded">
+                    <h4>Expertise</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Humanoid Robotics</span>
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">ROS</span>
+                        <span class="skill-tag">Neural Networks</span>
+                        <span class="skill-tag">Motion Planning</span>
+                    </div>
+                </div>
+                <div class="about-section-expanded">
+                    <h4>Achievements</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">15+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">50+</div>
+                            <div class="stat-label">Patents Filed</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Publications</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <button class="contact-button">Send Message</button>
+                    <button class="contact-button">View LinkedIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-member-expanded" id="expanded-cofounder2">
+        <div class="expanded-content">
+            <div class="expanded-header">
+                <span class="close-expanded" onclick="closeExpanded('cofounder2')">&times;</span>
+                <div class="expanded-avatar">👤</div>
+                <h2>Sarah Johnson</h2>
+                <h3>Co-Founder & Chief Medical Technology Officer</h3>
+            </div>
+            <div class="expanded-body">
+                <div class="about-section-expanded">
+                    <h4>About</h4>
+                    <p>Sarah brings a unique blend of medical expertise and technology innovation to our organization. With an MD from Johns Hopkins and an MS in Biomedical Engineering from Stanford, Sarah has dedicated her career to developing technology that improves patient care and quality of life.</p>
+                    <p>Her work in elderly care technology has been recognized internationally, earning her numerous awards including the Healthcare Innovation Award from the WHO.</p>
+                </div>
+                <div class="about-section-expanded">
+                    <h4>Expertise</h4>
+                    <div class="skills-list">
+                        <span class="skill-tag">Healthcare Technology</span>
+                        <span class="skill-tag">Geriatric Care</span>
+                        <span class="skill-tag">Medical Robotics</span>
+                        <span class="skill-tag">UX Design</span>
+                        <span class="skill-tag">Clinical Research</span>
+                        <span class="skill-tag">Patient Safety</span>
+                    </div>
+                </div>
+                <div class="about-section-expanded">
+                    <h4>Achievements</h4>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">12+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">25+</div>
+                            <div class="stat-label">Clinical Trials</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10K+</div>
+                            <div class="stat-label">Patients Helped</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-info">
+                    <button class="contact-button">Send Message</button>
+                    <button class="contact-button">View LinkedIn</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-member-expanded" id="expanded-exec1">
+        <div class="expanded-content">
+            <div class="expanded-header">
+                <span class="close-expanded" onclick="closeExpanded('exec1')">&times;</span>
+                <div class="expanded-avatar">👤</div>
+                <h2>Michael Torres</h2>
+                <h3>Operations Director</h3>
+            </div>
+            <div class="expanded-body">
